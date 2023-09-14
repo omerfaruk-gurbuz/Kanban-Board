@@ -20,7 +20,7 @@ const Editable = (props) => {
       {show ? (
         <form onSubmit={handleOnSubmit}>
           <div className={`editable__input ${props.class}`}>
-            <textarea
+            <input
               placeholder={props.placeholder}
               autoFocus
               id={"edit-input"}
@@ -35,7 +35,6 @@ const Editable = (props) => {
                 className="close"
                 onClick={() => {
                   setShow(false);
-                  props?.setHandler(false);
                 }}
               />
             </div>

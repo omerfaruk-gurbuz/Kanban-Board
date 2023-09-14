@@ -1,23 +1,19 @@
 import React, { useEffect, useState } from "react";
-import Card from "../Card/Card";
 import "./Board.css";
-import Editable from "../Edittable/Edittable";
-import Dropdown from "../Dropdown/Dropdown";
 import { Droppable } from "react-beautiful-dnd";
-
+import Card from "../Card/Card";
+import Editable from "../Edittable/Edittable";
 
 export default function Board(props) {
-
   const [show, setShow] = useState(false);
-  const [dropdown, setDropdown] = useState(false);
 
   useEffect(() => {
-    document.addEventListener("keypress", (e) => {
-      if (e.code === "Enter") setShow(false);
+    document.addEventListener("mouseout", (e) => {
+       setShow(false);
     });
     return () => {
-      document.removeEventListener("keypress", (e) => {
-        if (e.code === "Enter") setShow(false);
+      document.removeEventListener("mouseout", (e) => {
+         setShow(false);
       });
     };
   });
@@ -55,7 +51,7 @@ export default function Board(props) {
 
 
       </div>
-      <Droppable droppableId={props.id.toString()}>
+      <Droppable type="CARD" droppableId={props.id.toString()}>
         {(provided) => (
           <div
             className="board__cards"

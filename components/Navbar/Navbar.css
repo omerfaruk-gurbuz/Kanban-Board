@@ -1,12 +1,12 @@
 .navbar {
-    color: rgb(148, 6, 250);;
+    color: rgb(255, 255, 255);;
     font-weight: 800;
-    padding: 2rem;
+    padding: 1.5rem;
     padding-inline: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #bebe;
+    background-color: rgba(21, 0, 255, 0.933);
   }
 
 h1{

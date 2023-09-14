@@ -1,8 +1,9 @@
 .editable {
     height: auto;
+    width: auto;
   }
   .editable > p {
-    width: 85%;
+    width: 100%;
     display: flex;
     gap: 5px;
     border-radius: 5px;
@@ -10,8 +11,12 @@
     transition: ease-in-out 200ms;
     margin-inline: auto;
   }
+  .editable > p{
+    background-color: #00ff779f;
+    width: 50%;
+  }
   .editable > p:hover {
-    background-color: #ccc;
+    background-color: #00ff77;
     color: #000;
     cursor: pointer;
   }
@@ -22,6 +27,15 @@
     padding-inline: 0.5rem;
     gap: 10px;
   }
+
+  input{
+    padding: 0.5rem;
+    border-radius: 100px;
+  }
+  input:focus{
+    border: 2px solid yellow;
+  }
+
   .editable__input > textarea {
     width: 98% !important;
     -webkit-appearance: none;
@@ -71,4 +85,3 @@
   .close:hover {
     cursor: pointer;
   }
-  

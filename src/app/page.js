@@ -150,6 +150,7 @@ function App() {
                 updateCard={updateCard}
               />
             ))}
+            <div className="add_board_div">
             <Editable
               class={"add__board"}
               name={"Add Board"}
@@ -157,6 +158,7 @@ function App() {
               onSubmit={addBoard}
               placeholder={"Enter Board  Title"}
             />
+            </div>
           </div>
         </div>
       </div>

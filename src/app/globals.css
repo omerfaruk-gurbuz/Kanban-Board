@@ -65,8 +65,14 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(195, 195, 195);
 }
+.add_board_div{
+  width:20rem;
+}
+.add__btn{
+  background-color: darkred;
+}
 .add__board > textarea {
-  border: 0.5px solid rgb(167, 167, 167) !important;
+  border: 2px solid rgb(74, 66, 66) !important;
   height: 2rem !important;
 }
 .card_detail > textarea {
@@ -78,3 +84,6 @@ body {
 .cardinfo__editable {
   width: fit-content;
 }
+/* .add_board_div{
+  width: 15;
+} */
