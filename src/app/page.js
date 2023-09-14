@@ -3,29 +3,21 @@ import { useEffect, useState } from "react";
 import "./globals.css";
 import Navbar from "../../components/Navbar/Navbar";
 import Board from "../../components/Board/Board";
-// import data from '../data'
 import { DragDropContext } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
 import Editable from "../../components/Edittable/Edittable";
-import useLocalStorage from "use-local-storage";//!redux
-// import "../bootstrap.css";
-function App() {
-  const [data, setData] = useState(
-    localStorage.getItem("kanban-board")
-      ? JSON.parse(localStorage.getItem("kanban-board"))
-      : []
-  );
+import useLocalStorage from "use-local-storage"; // Redux için kullanılacak gibi görünüyor
 
-  const defaultDark = window.matchMedia(
-    "(prefers-colors-scheme: dark)"
-  ).matches;
-  const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
-  );
+function App() {
+  const [theme, setTheme] = useLocalStorage("theme", "light");
+  
+  const [data, setData] = useState(() => {
+    const savedData = localStorage.getItem("kanban-board");
+    return savedData ? JSON.parse(savedData) : [];
+  });
 
   const switchTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
 
   const setName = (title, bid) => {
@@ -52,18 +44,6 @@ function App() {
 
     return tempData;
   };
-
-  // const dragCardInSameBoard = (source, destination) => {
-  //   let tempData = Array.from(data);
-  //   console.log("Data", tempData);
-  //   const index = tempData.findIndex(
-  //     (item) => item.id.toString() === source.droppableId
-  //   );
-  //   console.log(tempData[index], index);
-  //   let [removedCard] = tempData[index].card.splice(source.index, 1);
-  //   tempData[index].card.splice(destination.index, 0, removedCard);
-  //   setData(tempData);
-  // };
 
   const addCard = (title, bid) => {
     const index = data.findIndex((item) => item.id === bid);
@@ -123,7 +103,6 @@ function App() {
     if (cardIndex < 0) return;
 
     tempBoards[index].card[cardIndex] = card;
-    console.log(tempBoards);
     setData(tempBoards);
   };
 
@@ -151,13 +130,13 @@ function App() {
               />
             ))}
             <div className="add_board_div">
-            <Editable
-              class={"add__board"}
-              name={"Add Board"}
-              btnName={"Add Board"}
-              onSubmit={addBoard}
-              placeholder={"Enter Board  Title"}
-            />
+              <Editable
+                class={"add__board"}
+                name={"Add Board"}
+                btnName={"Add Board"}
+                onSubmit={addBoard}
+                placeholder={"Enter Board  Title"}
+              />
             </div>
           </div>
         </div>
